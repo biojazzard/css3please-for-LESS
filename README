@@ -1,0 +1,29 @@
+css3please-for-LESS
+===================
+
+A collecion of LESS Mixins to produce:
+
+http://css3please.com
+https://github.com/paulirish/css3please
+
+By Paul Irish.
+
+http://lesscss.org/
+
+By Alexis Sellier | http://cloudhead.io/
+
+Versioning
+----------
+
+I´ll try to follow Paul Irish on this!!!.
+
+Some documentation used:
+------------------------
+
+http://css3.bradshawenterprises.com/
+http://msdn.microsoft.com/en-us/library/ms533014(v=vs.85).aspx
+http://en.wikipedia.org/wiki/Transformation_matrix
+http://www.useragentman.com/IETransformsTranslator/
+
+Enjoy ;-)
+----------

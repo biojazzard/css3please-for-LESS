@@ -1,0 +1,163 @@
+/* -------------------------------------------------------------
+      css3please-for-LESS by Alfredo Llanos | @biojazzard
+------------------------------------------------------------- */
+
+/* -------------------------------------------------------------
+      CSS3, Please! The Cross-Browser CSS3 Rule Generator
+      http://css3please.com
+      https://github.com/paulirish/css3please
+
+      By Paul Irish.
+------------------------------------------------------------- */
+
+.box_round(@radius: 6px) {
+  -webkit-border-radius: @radius; /* Saf3-4, iOS 1-3.2, Android ≤1.6 */
+     -moz-border-radius: @radius; /* FF1-3.6 */
+          border-radius: @radius; /* Opera 10.5 IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+  /* useful if you don't want a bg color from leaking outside the border: */
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+.box_shadow(@isInset, @offsetX, @offsetY, @blurRad, @blurSpread, @color) {
+  @inset: ~`@{isInset} === true ? "inset" : ""`;
+  -webkit-box-shadow: @inset @offsetX @offsetY @blurRad @blurSpread @color; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+     -moz-box-shadow: @inset @offsetX @offsetY @blurRad @blurSpread @color; /* FF3.5 - 3.6 */
+          box-shadow: @inset @offsetX @offsetY @blurRad @blurSpread @color; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+
+.box_gradient(@fromColor, @toColor) {
+  background-color: @fromColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@fromColor), to(@toColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, @fromColor, @toColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, @fromColor, @toColor); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, @fromColor, @toColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, @fromColor, @toColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(to bottom, @fromColor, @toColor);
+}
+
+.box_rgba(@rgbaColor) {
+  @argbColor: argb(@rgbaColor); // #AAGGRRGG conversion needed fpr ms filters.
+  background-color: transparent;
+  background-color: @rgbaColor;  /* FF3+, Saf3+, Opera 10.10+, Chrome, IE9 */
+            filter: ~`"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argbColor},endColorstr=@{argbColor})"`; /* IE6–IE9 */
+            zoom: 1;
+}
+
+.box_rotate(@degRotation) {
+  @degRot: ~`"@{degRotation}".replace("deg", "")`;
+  @m11: ~`Math.cos(@{degRot} * Math.PI / 180)`;
+  @m12: ~`Math.sin(-@{degRot} * Math.PI / 180)`;  
+  @m21: ~`Math.sin(@{degRot} * Math.PI / 180)`;  
+  @m22: ~`Math.cos(-@{degRot} * Math.PI / 180)`;  
+  -webkit-transform: rotate(@degRotation);  /* Saf3.1+, Chrome */
+     -moz-transform: rotate(@degRotation);  /* FF3.5+ */
+      -ms-transform: rotate(@degRotation);  /* IE9 */
+       -o-transform: rotate(@degRotation);  /* Opera 10.5 */
+          transform: rotate(@degRotation);
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Matrix(M11=@{m11}, M12=@{m12}, M21=@{m21}, M22=@{m22}, sizingMethod='auto expand')"; /* IE8+ - must be on one line: as seen here: http://www.useragentman.com/IETransformsTranslator/ */
+      filter: ~"progid:DXImageTransform.Microsoft.Matrix(M11=@{m11}, M12=@{m12}, M21=@{m21}, M22=@{m22}, sizingMethod='auto expand')"; /* IE6-IE7 */
+        zoom: 1;
+}
+
+.box_scale(@perScale) {
+  @m11: ~`Math.round(@{perScale} * 100) / 100`;
+  @m12: 0;
+  @m21: 0;
+  @m22: ~`Math.round(@{perScale} * 100) / 100`;
+  -webkit-transform: scale(@perScale);  /* Saf3.1+, Chrome */
+     -moz-transform: scale(@perScale);  /* FF3.5+ */
+      -ms-transform: scale(@perScale);  /* IE9 */
+       -o-transform: scale(@perScale);  /* Opera 10.5+ */
+          transform: scale(@perScale);
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Matrix(M11=@{m11}, M12=@{m12}, M21=@{m21}, M22=@{m22}, sizingMethod='auto expand')"; /* IE8+ - must be on one line: as seen here: http://www.useragentman.com/IETransformsTranslator/ */
+      filter: ~"progid:DXImageTransform.Microsoft.Matrix(M11=@{m11}, M12=@{m12}, M21=@{m21}, M22=@{m22}, sizingMethod='auto expand')"; /* IE6-IE7 */
+        zoom: 1;
+}
+
+.box_3dtransforms(@perspective, @degRotateY) {
+  -webkit-perspective: @perspective;  /* Saf4+, Chrome 12+ */
+     -moz-perspective: @perspective;  /* FF10+ */
+      -ms-perspective: @perspective;  /* IE10+ */
+          perspective: @perspective; 
+  -webkit-transform: rotateY(@degRotateY);  -webkit-transform-style: preserve-3d;   
+     -moz-transform: rotateY(@degRotateY);     -moz-transform-style: preserve-3d;
+      -ms-transform: rotateY(@degRotateY);      -ms-transform-style: preserve-3d;
+          transform: rotateY(@degRotateY);          transform-style: preserve-3d; 
+}
+
+.box_transition(@secTransition, @easeStyle: ease-out) {
+  -webkit-transition: all @secTransition @easeStyle;  /* Saf3.2+, Chrome */
+     -moz-transition: all @secTransition @easeStyle;  /* FF4+ */
+      -ms-transition: all @secTransition @easeStyle;  /* IE10 */
+       -o-transition: all @secTransition @easeStyle;  /* Opera 10.5+ */
+          transition: all @secTransition @easeStyle;
+}
+
+.box_textshadow(@offsetX, @offsetY, @blurSpread, @color) {
+     text-shadow: @offsetX @offsetY @blurSpread @color; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+}
+
+.box_opacity(@perOpacity) {
+  @percentOpacity: ~`@{perOpacity} * 100`;
+  opacity: @perOpacity; /* Chrome 4+, FF2+, Saf3.1+, Opera 9+, IE9, iOS 3.2+, Android 2.1+ */
+  filter: alpha(opacity=@percentOpacity); /* IE6-IE8 */
+}
+
+.box_border-box() {
+  -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+     -moz-box-sizing: border-box; /* FF1+ */
+          box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
+
+.box_bgsize(@percentageX, @percentageY) {
+  -webkit-background-size: @percentageX @percentageY; /* Saf3-4 */
+     -moz-background-size: @percentageX @percentageY; /* FF3.6 */
+          background-size: @percentageX @percentageY; /* Opera, IE9, Saf5, Chrome, FF4 */
+}
+
+.box_columns(@numCols, @gapCols) {
+  -webkit-column-count: @numCols;  -webkit-column-gap: @gapCols; /* Saf3, Chrome */
+     -moz-column-count: @numCols;     -moz-column-gap: @gapCols; /* FF3.5+ */
+          column-count: @numCols;          column-gap: @gapCols; /* Opera 11+ */
+}
+
+.box_animation(@animeName, @animeTime, @animeStyle: infinite) {
+  -webkit-animation: @animeName @animeTime @animeStyle; /* Saf5, Chrome */
+     -moz-animation: @animeName @animeTime @animeStyle; /* FF5+ */
+      -ms-animation: @animeName @animeTime @animeStyle; /* IE10 */
+}
+
+@-webkit-keyframes myanim {
+  0%   { opacity: 0.0; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1.0; }
+}
+@-moz-keyframes myanim {
+  0%   { opacity: 0.0; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1.0; }
+}
+@-ms-keyframes myanim {
+  0%   { opacity: 0.0; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1.0; }
+}
+
+/* rotate scale skew skew move */
+
+.matrix {
+
+}
+
+.font-face(@font) {
+  font-family: 'WebFont';
+  src: url('@{font}.eot?#') format('eot'),  /* IE6–8 */
+       url('@{font}.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('@{font}.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+.box_tabsize(@tabSize) {
+  -moz-tab-size: @tabSize; /* Firefox 4+ */
+    -o-tab-size: @tabSize; /* Opera 10.60+ */
+       tab-size: @tabSize;
+}

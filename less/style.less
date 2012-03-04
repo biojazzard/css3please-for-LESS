@@ -1,0 +1,68 @@
+/* -------------------------------------------------------------
+      Style Test using css3please-for-LESS
+      by Alfredo Llanos | @biojazzard
+------------------------------------------------------------- */
+
+@import "css3please-for-LESS.less";
+
+/* Variables
+------------------------------------------------------------- */
+
+/* Shadows */
+@insetShadow:   true;
+@shadowColor:   #323232;
+
+/* Colors */
+@fromHexColor:  #444444;
+@toHexColor:    #999999;
+@rgbaColor:     rgba(200, 0, 0, 0.5);
+
+/*  */
+@degRot:        270.0deg;
+@perScale:      0.8;
+
+@perspective:   300;
+@degRotateY:    15.0deg;
+
+/* Layer
+------------------------------------------------------------- */
+
+#sandbox {
+  margin: 20px auto;
+  width: 440px;
+  height: 400px;
+  .box_round(6px);
+  .box_shadow(@insetShadow, 0, 0, 10px, 5px, @shadowColor);
+  h1 {
+    font-size: 56px;
+    word-spacing: 2px;
+    text-align: center;
+    margin: 0 0 20px 0;
+    .box_textshadow(1px, 1px, 12px, @shadowColor);
+  }
+  abbr {
+    cursor: help;
+    font-size: 1.3em;
+    color: #FF2166;
+    .box_textshadow(0px, 0px, 1px, #333);
+    border-bottom: 1px dashed #888;
+  }
+  p {
+    font-size: 24px;
+    text-align: center;
+    .box_textshadow(1px, 1px, 3px, #888);
+    .box_columns(2, 20px);
+  }
+  .box_gradient(@fromHexColor, @toHexColor);
+  .box_rgba(@rgbaColor);
+  .box_scale(@perScale);
+  //.box_rotate(@degRot);
+  //.box_3dtransforms(@perspective, @degRotateY);
+  .box_opacity(0.9);
+  .box_bgsize(100%, 100%);
+  .box_border-box();
+  &:hover {
+    .box_animation(myanim, 3s, infinite);
+  }
+}
+
