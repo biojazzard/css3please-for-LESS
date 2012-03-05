@@ -53,15 +53,21 @@ You get this CSS:
     .box_shadow(@isInset, @offsetX, @offsetY, @blurRad, @blurSpread, @color)
 
 @isInset: boolean
+
 @offsetX: px
+
 @offsetY: px
+
 @blurRad: px
+
 @blurSpread: px
+
 @color: color
 
     .box_gradient(@fromColor, @toColor)
 
 @fromColor: color
+
 @toColor: color
 
     .box_rgba(@rgbaColor)
@@ -79,18 +85,23 @@ You get this CSS:
     .box_3dtransforms(@perspective, @degRotateY)
 
 @perspective: units
+
 @degRotateY: degrees [ex: 13.deg]
 
     .box_transition(@secTransition, @easeStyle: ease-out)
 
 @secTransition: secs 
+
 @easeStyle: defaults to ease-out [ease-in...]
 
     .box_textshadow(@offsetX, @offsetY, @blurSpread, @color)
 
 @offsetX: px
+
 @offsetY:px
+
 @blurSpread: px
+
 @color: color
 
     .box_opacity(@perOpacity)
@@ -104,17 +115,21 @@ No input var
     .box_bgsize(@percentageX, @percentageY)
 
 @percentageX: percentage [ex: 80%]
+
 @percentageY: percentage [ex: 60%]
 
     .box_columns(@numCols, @gapCols)
 
 @numCols: integer
+
 @gapCols: px
 
     .box_animation(@animeName, @animeTime, @animeStyle: infinite)
 
 @animeName: string
+
 @animeTime: secs [ex: 3s]
+
 @animeStyle: infinite
 
     .font-face(@font)
