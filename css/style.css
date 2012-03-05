@@ -7,14 +7,10 @@
 ------------------------------------------------------------- */
 /* -------------------------------------------------------------
       CSS3, Please! The Cross-Browser CSS3 Rule Generator
-      ===================================================
+      http://css3please.com
+      https://github.com/paulirish/css3please
 
-      You can edit the underlined values in this css file,
-      but don't worry about making sure the corresponding
-      values match, that's all done automagically for you.
-
-      Whenever you want, you can copy the whole or part of
-      this page and paste it into your own stylesheet.
+      By Paul Irish.
 ------------------------------------------------------------- */
 @-webkit-keyframes myanim {
   0% {
@@ -126,7 +122,27 @@
   /* IE8+ - must be on one line: as seen here: http://www.useragentman.com/IETransformsTranslator/ */
 
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.8, M12=0, M21=0, M22=0.8, sizingMethod='auto expand');
+  /* IE6-IE7 */
+
+  zoom: 1;
+  -webkit-transform: rotate(30deg);
+  /* Saf3.1+, Chrome */
+
+  -moz-transform: rotate(30deg);
+  /* FF3.5+ */
+
+  -ms-transform: rotate(30deg);
+  /* IE9 */
+
+  -o-transform: rotate(30deg);
+  /* Opera 10.5 */
+
+  transform: rotate(30deg);
+  -ms-filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.8660254037844387, M12=-0.49999999999999994, M21=0.49999999999999994, M22=0.8660254037844387, sizingMethod='auto expand');
   /* IE8+ - must be on one line: as seen here: http://www.useragentman.com/IETransformsTranslator/ */
+
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.8660254037844387, M12=-0.49999999999999994, M21=0.49999999999999994, M22=0.8660254037844387, sizingMethod='auto expand');
+  /* IE6-IE7 */
 
   zoom: 1;
   opacity: 0.9;
